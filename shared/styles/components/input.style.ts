@@ -1,0 +1,81 @@
+import { StyleSheet } from 'react-native';
+import { fontMontserrat } from '../../../utils/styles/fonts';
+import { cDanger } from '../colors';
+
+export const inputTextStyle = StyleSheet.create({
+  input: {
+    borderWidth: 1,
+    borderColor: '#F0F1F7',
+    borderRadius: 8,
+    paddingVertical: 16,
+    letterSpacing: 0.3,
+    fontFamily: fontMontserrat('normal'),
+    backgroundColor: 'white',
+  },
+  inputError: {
+    borderWidth: 1,
+    borderColor: cDanger[500],
+    borderRadius: 8,
+    paddingVertical: 12,
+    letterSpacing: 0.3,
+    fontFamily: fontMontserrat('normal'),
+    backgroundColor: 'white',
+  },
+  inputWithoutIcon: {
+    paddingHorizontal: 12,
+    fontFamily: fontMontserrat('normal'),
+    backgroundColor: 'white',
+  },
+  inputWithIconRight: {
+    paddingLeft: 12,
+    paddingRight: 44,
+    fontFamily: fontMontserrat('normal'),
+    backgroundColor: 'white',
+  },
+  inputWithIconLeft: {
+    paddingRight: 12,
+    paddingLeft: 50,
+    fontFamily: fontMontserrat('normal'),
+    backgroundColor: 'white',
+  },
+  inputIconRight: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    height: '100%',
+    width: 56,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: fontMontserrat('normal'),
+    backgroundColor: 'white',
+  },
+  inputIconLeft: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: '100%',
+    width: 56,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: fontMontserrat('normal'),
+    backgroundColor: 'white',
+  },
+  formErrorMessage: {
+    marginVertical: 4,
+    display: 'flex',
+    gap: 4,
+    justifyContent: 'flex-start',
+    fontFamily: fontMontserrat('normal'),
+    backgroundColor: 'white',
+  },
+  textErrorMessage: {
+    fontSize: 12,
+    color: cDanger[500],
+    letterSpacing: 0.3,
+    lineHeight: 16,
+    fontFamily: fontMontserrat('normal'),
+    backgroundColor: 'white',
+  },
+});

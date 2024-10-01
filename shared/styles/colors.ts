@@ -1,0 +1,103 @@
+import { TColor } from '../types/app.type';
+
+export const cPrimary: Record<TColor, string> = {
+  lighter: '#a1f9c8',
+  default: '#004a2f',
+  darker: '#00301f',
+  '50': '#ebfef3',
+  '100': '#cefde0',
+  '200': '#a1f9c8',
+  '300': '#64f1ab',
+  '400': '#27e08a',
+  '500': '#02c772',
+  '600': '#00a25e',
+  '700': '#00824e',
+  '800': '#00663f',
+  '900': '#004a2f',
+  '950': '#00301f',
+};
+
+export const cDanger: Record<TColor, string> = {
+  lighter: '#ffc7c7',
+  default: '#841818',
+  darker: '#480707',
+  '50': '#fff1f1',
+  '100': '#ffe1e1',
+  '200': '#ffc7c7',
+  '300': '#ffa0a0',
+  '400': '#ff8383',
+  '500': '#f83b3b',
+  '600': '#e51d1d',
+  '700': '#c11414',
+  '800': '#a01414',
+  '900': '#841818',
+  '950': '#480707',
+};
+
+export const cWarning: Record<TColor, string> = {
+  lighter: '#fdd6ab',
+  default: '#fbad60',
+  darker: '#c03f0e',
+  '50': '#fff7ed',
+  '100': '#ffecd5',
+  '200': '#fdd6ab',
+  '300': '#fbad60',
+  '400': '#f98f3e',
+  '500': '#f77018',
+  '600': '#e8560e',
+  '700': '#c03f0e',
+  '800': '#993313',
+  '900': '#7b2d13',
+  '950': '#421308',
+};
+
+export const cSecondary: Record<TColor, string> = {
+  lighter: '#c7c2c1',
+  default: '#6d6262',
+  darker: '#443f40',
+  '50': '#f4f2f2',
+  '100': '#e2e0df',
+  '200': '#c7c2c1',
+  '300': '#a79e9d',
+  '400': '#8e8281',
+  '500': '#7f7473',
+  '600': '#6d6262',
+  '700': '#585050',
+  '800': '#4d4647',
+  '900': '#443f40',
+  '950': '#262223',
+};
+
+export const cDark: Record<TColor, string> = {
+  lighter: '#6d6d6d',
+  default: '#1e1e1e',
+  darker: '#000000',
+  '50': '#f6f6f6',
+  '100': '#e7e7e7',
+  '200': '#d1d1d1',
+  '300': '#b0b0b0',
+  '400': '#888888',
+  '500': '#6d6d6d',
+  '600': '#5d5d5d',
+  '700': '#4f4f4f',
+  '800': '#454545',
+  '900': '#3d3d3d',
+  '950': '#1e1e1e',
+};
+
+export const cBlue: Record<TColor, string> = {
+  '50': '#f0f7fe',
+  '100': '#dcecfd',
+  '200': '#c1dffc',
+  '300': '#97ccf9',
+  lighter: '#97ccf9',
+  '400': '#66b1f4',
+  '500': '#4291ef',
+  '600': '#387be5',
+  default: '#387be5',
+  '700': '#245ed1',
+  '800': '#234daa',
+  darker: '#234daa',
+  '900': '#224386',
+  '950': '#192a52',
+};
