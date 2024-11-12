@@ -1,20 +1,20 @@
 import { TColor } from '../types/app.type';
 
 export const cPrimary: Record<TColor, string> = {
-  lighter: '#a1f9c8',
-  default: '#004a2f',
-  darker: '#00301f',
-  '50': '#ebfef3',
-  '100': '#cefde0',
-  '200': '#a1f9c8',
-  '300': '#64f1ab',
-  '400': '#27e08a',
-  '500': '#02c772',
-  '600': '#00a25e',
-  '700': '#00824e',
-  '800': '#00663f',
-  '900': '#004a2f',
-  '950': '#00301f',
+  default: '#034c99',
+  lighter: '#badbfd',
+  darker: '#082549',
+  '50': '#f0f7ff',
+  '100': '#e0edfe',
+  '200': '#badbfd',
+  '300': '#7dbffc',
+  '400': '#389ef8',
+  '500': '#0e82e9',
+  '600': '#0265c7',
+  '700': '#034c99',
+  '800': '#074585',
+  '900': '#0c3a6e',
+  '950': '#082549',
 };
 
 export const cDanger: Record<TColor, string> = {
@@ -52,20 +52,20 @@ export const cWarning: Record<TColor, string> = {
 };
 
 export const cSecondary: Record<TColor, string> = {
-  lighter: '#c7c2c1',
-  default: '#6d6262',
-  darker: '#443f40',
-  '50': '#f4f2f2',
-  '100': '#e2e0df',
-  '200': '#c7c2c1',
-  '300': '#a79e9d',
-  '400': '#8e8281',
-  '500': '#7f7473',
-  '600': '#6d6262',
-  '700': '#585050',
-  '800': '#4d4647',
-  '900': '#443f40',
-  '950': '#262223',
+  lighter: '#dcdcdc',
+  default: '#656565',
+  darker: '#3d3d3d',
+  '50': '#f5f5f5',
+  '100': '#efefef',
+  '200': '#dcdcdc',
+  '300': '#bdbdbd',
+  '400': '#989898',
+  '500': '#7c7c7c',
+  '600': '#656565',
+  '700': '#525252',
+  '800': '#464646',
+  '900': '#3d3d3d',
+  '950': '#292929',
 };
 
 export const cDark: Record<TColor, string> = {
@@ -100,4 +100,21 @@ export const cBlue: Record<TColor, string> = {
   darker: '#234daa',
   '900': '#224386',
   '950': '#192a52',
+};
+
+export const cSuccess: Record<TColor, string> = {
+  '50': '#f3faf3',
+  '100': '#e4f4e4',
+  '200': '#c9e9ca',
+  lighter: '#c9e9ca',
+  '300': '#9fd6a3',
+  '400': '#6dbb72',
+  '500': '#489d4e',
+  default: '#489d4e',
+  '600': '#37823d',
+  '700': '#2e6732',
+  '800': '#29522d',
+  darker: '#29522d',
+  '900': '#234426',
+  '950': '#0f2412',
 };

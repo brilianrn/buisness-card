@@ -8,5 +8,7 @@ export { default as Icon } from './icon';
 export { default as Image } from './image';
 export { default as InputText } from './input/text';
 export { default as Layout } from './layout';
+export { default as PrivateRoute } from './layout/private';
+export { default as SplashScreen } from './splash-screen';
 export { default as Tab } from './tab';
 export { default as Text } from './text';

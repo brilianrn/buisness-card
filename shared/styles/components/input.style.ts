@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { fontMontserrat } from '../../../utils/styles/fonts';
 import { cDanger } from '../colors';
+import { fontMontserrat } from '../fonts';
 
 export const inputTextStyle = StyleSheet.create({
   input: {
@@ -36,7 +36,7 @@ export const inputTextStyle = StyleSheet.create({
     paddingRight: 12,
     paddingLeft: 50,
     fontFamily: fontMontserrat('normal'),
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
   },
   inputIconRight: {
     position: 'absolute',
@@ -48,7 +48,7 @@ export const inputTextStyle = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     fontFamily: fontMontserrat('normal'),
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
   },
   inputIconLeft: {
     position: 'absolute',

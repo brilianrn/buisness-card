@@ -1,10 +1,12 @@
-import { Layout } from '../../components';
+import { Layout, PrivateRoute } from '../../components';
 import { ConnectionDetailView } from '../../packages';
 
 const ConnectionDetail = () => {
   return (
     <Layout overflowY={false}>
-      <ConnectionDetailView />
+      <PrivateRoute>
+        <ConnectionDetailView />
+      </PrivateRoute>
     </Layout>
   );
 };

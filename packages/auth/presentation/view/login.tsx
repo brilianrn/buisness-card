@@ -5,19 +5,22 @@ import { View } from 'react-native';
 import { useRouter } from 'react-native-auto-route';
 import * as Yup from 'yup';
 import { IconEye, IconEyeOff } from '../../../../assets/icons/auth';
-import { Icon } from '../../../../assets/images';
+import { Flex, Text } from '../../../../components';
 import Button from '../../../../components/button';
-import Image from '../../../../components/image';
 import InputText from '../../../../components/input/text';
-import { appRoute } from '../../../../constants/routes';
+import { authRoute } from '../../../../constants/routes';
 import validationMessage from '../../../../constants/validation-message';
-import { cPrimary } from '../../../../shared/styles/colors';
-import { ILoginBody } from '../dto/request';
+import { ILoginPayload } from '../../domain/request';
+import { useAuth } from '../controller';
 
 const LoginView = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const { navigate } = useRouter();
+
+  const {
+    login: { mutate: onSubmit, isLoading },
+  } = useAuth();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -30,24 +33,14 @@ const LoginView = () => {
     control,
     handleSubmit,
     formState: { errors, isSubmitting, isValid },
-  } = useForm<ILoginBody>({
+  } = useForm<ILoginPayload>({
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
   });
+
   return (
     <React.Fragment>
-      <Image
-        src={Icon}
-        height={200}
-        width={200}
-        style={{
-          borderRadius: 100,
-          marginBottom: 48,
-          borderWidth: 1,
-          borderColor: cPrimary.default,
-        }}
-      />
-      <View style={{ display: 'flex', flex: 1, gap: 16, marginBottom: 48 }}>
+      <View style={{ display: 'flex', flex: 1, gap: 16 }}>
         <InputText
           type="email-address"
           label="Email"
@@ -69,13 +62,27 @@ const LoginView = () => {
           iconOnClick={() => setShowPassword(!showPassword)}
         />
       </View>
+      <Button.Link
+        size="sm"
+        alignSelf="flex-end"
+        mt={8}
+        mb={16}
+        onPress={() => navigate(authRoute['forgot-password'])}>
+        Forgot password?
+      </Button.Link>
       <Button
         label="Login"
-        onPress={() => navigate(appRoute['my-card'])}
+        onPress={handleSubmit((body) => onSubmit(body))}
         type="primary"
         isDisable={!isValid || isSubmitting}
-        isLoading={isSubmitting && isValid}
+        isLoading={isValid && isLoading}
       />
+      <Flex mt={8} alignSelf="center">
+        <Text size="sm">Don't have an account?</Text>
+        <Button.Link size="sm" onPress={() => navigate(authRoute.register)}>
+          Register
+        </Button.Link>
+      </Flex>
     </React.Fragment>
   );
 };

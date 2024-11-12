@@ -1,13 +1,14 @@
 import { Stack } from 'react-native-auto-route';
-import { ThemeProvider } from 'react-native-magnus';
 import { appRoute } from '../constants/routes';
-import { themes } from '../magnus.config';
+import { GlobalProvider, MagnusProvider } from '../shared/providers';
 
 const RootLayout = () => {
   return (
-    <ThemeProvider theme={themes}>
-      <Stack initialRouteName={appRoute['(app)']} screenOptions={{ headerShown: false }} />
-    </ThemeProvider>
+    <GlobalProvider>
+      <MagnusProvider>
+        <Stack initialRouteName={appRoute['(app)']} screenOptions={{ headerShown: false }} />
+      </MagnusProvider>
+    </GlobalProvider>
   );
 };
 

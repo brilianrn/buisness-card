@@ -8,9 +8,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "types": ["node"]
   },
-  "include": ["**/*.ts", "**/*.tsx", "image.d.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "type.d.ts"],
   "exclude": ["node_modules", "package-lock.json", "yarn.lock"],
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "paths": {
+    "crypto": ["node_modules/crypto"]
+  }
 }

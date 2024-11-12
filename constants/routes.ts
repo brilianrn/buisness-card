@@ -11,4 +11,6 @@ export const appRoute = {
 export const authRoute = {
   '(auth)': '(auth)',
   login: 'login',
+  register: 'register',
+  'forgot-password': 'forgot-password',
 };

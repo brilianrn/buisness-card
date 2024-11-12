@@ -1,0 +1,26 @@
+{
+  "Messages": {
+    "200": "Data successfully loaded.",
+    "201": "Your account has been created. Welcome aboard!",
+    "204": "Item successfully deleted.",
+    "400": "Your request is invalid. Please check and try again.",
+    "401": "You need to log in first.",
+    "403": "Sorry, you don't have permission to access this.",
+    "404": "The page you're looking for was not found.",
+    "405": "This method is not allowed for this request.",
+    "408": "Your request took too long. Please try again later.",
+    "409": "There was a conflict with the data you submitted. Please check and try again.",
+    "410": "The resource you're looking for is no longer available.",
+    "500": "Something went wrong on our end. Please try again in a while.",
+    "502": "There was an issue connecting to the server. Please try again.",
+    "503": "Our service is temporarily unavailable. Please try again shortly.",
+    "504": "The server did not respond in time. Please try again later."
+  },
+  "Login": {
+    "fail": "Invalid email or password!",
+    "success": "Sign in successfully"
+  },
+  "MyCard": {
+    "berhasil": "Weew"
+  }
+}

@@ -1,3 +1,11 @@
+export { default as ICCloseWhite } from './close-white.webp';
+export { default as ICClose } from './close.webp';
 export { default as ICEdit } from './edit.webp';
+export { default as ICInstagram } from './instagram.webp';
+export { default as ICLinkedIn } from './linkedin.webp';
 export { default as ReactNative } from './react-native.webp';
+export { default as ICSaveWhite } from './save-white.webp';
+export { default as ICShareWhite } from './share-white.webp';
 export { default as ICShare } from './share.webp';
+export { default as ICSuitase } from './suitcase.webp';
+export { default as ICX } from './x.webp';

@@ -1,19 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
-import { ICEdit, ICShare, ReactNative } from '../../../../assets/icons/main';
+import { ReactNative } from '../../../../assets/icons/main';
 import { Button, Card, Div, Flex, For, Image, Text } from '../../../../components';
 import { cDark } from '../../../../shared/styles/colors';
-import { ContactInformation, MainHeader, Portofolio, ProfileCard } from '../components';
+import { ContactInformation, Portofolio, ProfileCard } from '../components';
 
 const MyCardView = () => {
   return (
     <React.Fragment>
-      <MainHeader
-        title="My Card"
-        titlePosition="center"
-        leftIcons={[ICEdit]}
-        rightIcons={[ICShare]}
-      />
       <Div gap={16}>
         <ProfileCard />
         <Flex type="between">

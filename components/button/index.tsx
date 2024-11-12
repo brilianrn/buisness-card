@@ -31,7 +31,7 @@ const Button = ({
       borderColor={cPrimary.default}
       onPress={onPress}
       rounded={rounded}>
-      <Div row gap={8}>
+      <Div flexDir="row" justifyContent="center" alignItems="center" alignSelf="center" gap={8}>
         {isLoading && (
           <ActivityIndicator
             size="small"
@@ -42,7 +42,6 @@ const Button = ({
         <Text
           size="md"
           weight="bold"
-          flex={1}
           justifyContent="center"
           style={[textStyle, sx.text]}
           hex={type === 'outline-primary' || type === 'transparent' ? cPrimary.default : 'white'}>

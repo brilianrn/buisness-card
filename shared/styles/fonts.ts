@@ -1,5 +1,5 @@
 import { fontFamily, typeColor } from '../../constants/fonts';
-import { TColor, TColorType, TFontWeight, TSize } from '../../shared/types/app.type';
+import { TColor, TColorType, TFontWeight, TSize } from '../types/app.type';
 
 export const fontMontserrat = (weight: TFontWeight) => fontFamily.MONTSERRAT[weight];
 
