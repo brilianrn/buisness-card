@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { View } from 'react-native';
 import { useRouter } from 'react-native-auto-route';
@@ -7,26 +7,38 @@ import * as Yup from 'yup';
 import { Flex, Text } from '../../../../components';
 import Button from '../../../../components/button';
 import InputText from '../../../../components/input/text';
-import { appRoute, authRoute } from '../../../../constants/routes';
+import { authRoute } from '../../../../constants/routes';
 import validationMessage from '../../../../constants/validation-message';
+import { useAuth } from '../controller';
 
 const ForgotPasswordView = () => {
   const { navigate } = useRouter();
+
+  const {
+    forgotPassword: { mutate: onSubmit, isLoading, data },
+  } = useAuth();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email(validationMessage.format('email address'))
       .required(validationMessage.required('Email address')),
   });
-
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting, isValid },
   } = useForm({
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
   });
+
+  useEffect(() => {
+    if (data?.success && !isLoading) {
+      reset();
+    }
+  }, [data, isLoading, reset]);
+
   return (
     <React.Fragment>
       <View style={{ display: 'flex', flex: 1, gap: 16 }}>
@@ -42,7 +54,7 @@ const ForgotPasswordView = () => {
       <Button
         mt={16}
         label="Submit"
-        onPress={() => navigate(appRoute['my-card'])}
+        onPress={handleSubmit(({ email }) => onSubmit(email))}
         type="primary"
         isDisable={!isValid || isSubmitting}
         isLoading={isSubmitting && isValid}

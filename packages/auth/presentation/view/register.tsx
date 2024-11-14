@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { View } from 'react-native';
 import { useRouter } from 'react-native-auto-route';
@@ -10,45 +10,63 @@ import Button from '../../../../components/button';
 import InputText from '../../../../components/input/text';
 import { authRoute } from '../../../../constants/routes';
 import validationMessage from '../../../../constants/validation-message';
-import { ILoginPayload } from '../../domain/request';
+import { IRegisterPayload } from '../../domain/request';
+import { useAuth } from '../controller';
 
 const RegisterView = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
 
   const { navigate } = useRouter();
 
+  const {
+    register: { mutate: onSubmit, isLoading, data },
+  } = useAuth();
+
   const validationSchema = Yup.object().shape({
+    full_name: Yup.string().required(validationMessage.required('Fullname')),
     email: Yup.string()
       .email(validationMessage.format('email address'))
       .required(validationMessage.required('Email address')),
     password: Yup.string().required(validationMessage.required('Password')),
+    confirm_password: Yup.string()
+      .oneOf([Yup.ref('password')], validationMessage.invalidPassword)
+      .required(validationMessage.required('Confrim password')),
   });
-
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting, isValid },
-  } = useForm<ILoginPayload>({
+  } = useForm<IRegisterPayload>({
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
   });
+
+  useEffect(() => {
+    if (data?.success && !isLoading) {
+      reset();
+      setShowPassword(false);
+    }
+  }, [data, isLoading, reset]);
+
   return (
     <React.Fragment>
       <View style={{ display: 'flex', flex: 1, gap: 16 }}>
+        <InputText
+          type="default"
+          label="Fullname"
+          control={control}
+          name="full_name"
+          placeholder="Insert fullname address"
+          errorMessage={errors?.full_name?.message?.toString()}
+        />
         <InputText
           type="email-address"
           label="Email"
           control={control}
           name="email"
           placeholder="Insert email address"
-          errorMessage={errors?.email?.message?.toString()}
-        />
-        <InputText
-          type="email-address"
-          label="Fullname"
-          control={control}
-          name="email"
-          placeholder="Insert fullname address"
           errorMessage={errors?.email?.message?.toString()}
         />
         <InputText
@@ -59,7 +77,7 @@ const RegisterView = () => {
           name="password"
           secureTextEntry={!showPassword}
           errorMessage={errors?.password?.message?.toString()}
-          icon={!showPassword ? IconEye : IconEyeOff}
+          icon={showPassword ? IconEye : IconEyeOff}
           iconPosition="right"
           iconOnClick={() => setShowPassword(!showPassword)}
         />
@@ -68,17 +86,17 @@ const RegisterView = () => {
           type="default"
           label="Confirm Password"
           control={control}
-          name="password"
-          secureTextEntry={!showPassword}
-          errorMessage={errors?.password?.message?.toString()}
-          icon={!showPassword ? IconEye : IconEyeOff}
+          name="confirm_password"
+          secureTextEntry={!showConfirmPassword}
+          errorMessage={errors?.confirm_password?.message?.toString()}
+          icon={showConfirmPassword ? IconEye : IconEyeOff}
           iconPosition="right"
-          iconOnClick={() => setShowPassword(!showPassword)}
+          iconOnClick={() => setShowConfirmPassword(!showConfirmPassword)}
         />
       </View>
       <Button
         label="Submit"
-        onPress={() => navigate(authRoute.login)}
+        onPress={handleSubmit((body) => onSubmit(body))}
         type="primary"
         isDisable={!isValid || isSubmitting}
         isLoading={isSubmitting && isValid}

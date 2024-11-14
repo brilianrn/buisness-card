@@ -16,9 +16,12 @@
     "503": "Our service is temporarily unavailable. Please try again shortly.",
     "504": "The server did not respond in time. Please try again later."
   },
-  "Login": {
-    "fail": "Invalid email or password!",
-    "success": "Sign in successfully"
+  "Auth": {
+    "loginFail": "Invalid email or password!",
+    "loginSuccess": "Sign in successfully",
+    "regisFail": "Sign up failed",
+    "regisSuccess": "Sign up successfully, please login with your email and password",
+    "forgotPassSuccess": "Forgot password request successfully, please check your email"
   },
   "MyCard": {
     "berhasil": "Weew"

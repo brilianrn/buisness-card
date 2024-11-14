@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { View } from 'react-native';
 import { useRouter } from 'react-native-auto-route';
@@ -19,7 +19,7 @@ const LoginView = () => {
   const { navigate } = useRouter();
 
   const {
-    login: { mutate: onSubmit, isLoading },
+    login: { mutate: onSubmit, isLoading, data },
   } = useAuth();
 
   const validationSchema = Yup.object().shape({
@@ -28,15 +28,22 @@ const LoginView = () => {
       .required(validationMessage.required('Email address')),
     password: Yup.string().required(validationMessage.required('Password')),
   });
-
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting, isValid },
   } = useForm<ILoginPayload>({
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
   });
+
+  useEffect(() => {
+    if (data?.success && !isLoading) {
+      reset();
+      setShowPassword(false);
+    }
+  }, [data, isLoading, reset]);
 
   return (
     <React.Fragment>
@@ -57,7 +64,7 @@ const LoginView = () => {
           name="password"
           secureTextEntry={!showPassword}
           errorMessage={errors?.password?.message?.toString()}
-          icon={!showPassword ? IconEye : IconEyeOff}
+          icon={showPassword ? IconEye : IconEyeOff}
           iconPosition="right"
           iconOnClick={() => setShowPassword(!showPassword)}
         />
