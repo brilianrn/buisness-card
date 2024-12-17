@@ -24,6 +24,9 @@
     "forgotPassSuccess": "Forgot password request successfully, please check your email"
   },
   "MyCard": {
-    "berhasil": "Weew"
+    "failUpload": "Upload photo profile failed",
+    "copySuccessfully": "{name} copied successfully",
+    "copyFailed": "{name} failed to copy",
+    "shareFailed": "Open share failed"
   }
 }

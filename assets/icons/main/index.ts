@@ -3,6 +3,7 @@ export { default as ICClose } from './close.webp';
 export { default as ICEdit } from './edit.webp';
 export { default as ICInstagram } from './instagram.webp';
 export { default as ICLinkedIn } from './linkedin.webp';
+export { default as ICQuestionCircle } from './question-circle.webp';
 export { default as ReactNative } from './react-native.webp';
 export { default as ICSaveWhite } from './save-white.webp';
 export { default as ICShareWhite } from './share-white.webp';

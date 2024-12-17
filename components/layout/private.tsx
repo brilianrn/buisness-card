@@ -1,6 +1,7 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'react-native-auto-route';
 import { authRoute } from '../../constants/routes';
+import { setAuthorizationHeader } from '../../core/api/utils';
 import { _retrieveData } from '../../shared/local-storage';
 import SplashScreen from '../splash-screen';
 
@@ -13,7 +14,8 @@ const PrivateRoute: FC<{ children: ReactNode }> = ({ children }) => {
     (async () => {
       const token = await _retrieveData('token');
       if (!token) replace(authRoute.login);
-      setIsLoadingSession(false);
+      const setHeader = await setAuthorizationHeader(token?.toString());
+      setHeader && setIsLoadingSession(false);
     })();
   }, []);
 

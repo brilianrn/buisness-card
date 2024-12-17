@@ -4,6 +4,6 @@ import { IDataLogin } from '../domain/response';
 
 export default interface IAuthRepository {
   login: (payload: ILoginPayload) => Promise<ResponseREST<IDataLogin>>;
-  register: (payload: IRegisterPayload) => Promise<ResponseREST<{}>>;
-  forgotPassword: (email: string) => Promise<ResponseREST<{}>>;
+  register: (payload: IRegisterPayload) => Promise<ResponseREST<undefined>>;
+  forgotPassword: (email: string) => Promise<ResponseREST<undefined>>;
 }

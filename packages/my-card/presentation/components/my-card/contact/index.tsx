@@ -1,5 +1,5 @@
-import { Card, For, Image, Text } from '../../../../../components';
-import { cDark } from '../../../../../shared/styles/colors';
+import { Card, For, Image, Text } from '../../../../../../components';
+import { cDark } from '../../../../../../shared/styles/colors';
 
 const Contact = () => {
   return (

@@ -1,40 +1,33 @@
 import { StyleSheet } from 'react-native';
-import { cDanger } from '../colors';
+import { cDanger, cDark } from '../colors';
 import { fontMontserrat } from '../fonts';
 
 export const inputTextStyle = StyleSheet.create({
+  textInput: {
+    fontFamily: fontMontserrat('normal'),
+    fontSize: 14,
+    paddingHorizontal: 14,
+  },
   input: {
     borderWidth: 1,
-    borderColor: '#F0F1F7',
-    borderRadius: 8,
-    paddingVertical: 16,
-    letterSpacing: 0.3,
-    fontFamily: fontMontserrat('normal'),
-    backgroundColor: 'white',
+    borderColor: cDark[100],
+    borderRadius: 12,
   },
   inputError: {
     borderWidth: 1,
     borderColor: cDanger[500],
-    borderRadius: 8,
-    paddingVertical: 12,
+    borderRadius: 12,
     letterSpacing: 0.3,
     fontFamily: fontMontserrat('normal'),
     backgroundColor: 'white',
   },
-  inputWithoutIcon: {
-    paddingHorizontal: 12,
-    fontFamily: fontMontserrat('normal'),
-    backgroundColor: 'white',
-  },
   inputWithIconRight: {
-    paddingLeft: 12,
     paddingRight: 44,
     fontFamily: fontMontserrat('normal'),
     backgroundColor: 'white',
   },
   inputWithIconLeft: {
-    paddingRight: 12,
-    paddingLeft: 50,
+    paddingLeft: 40,
     fontFamily: fontMontserrat('normal'),
     backgroundColor: 'transparent',
   },
@@ -61,6 +54,12 @@ export const inputTextStyle = StyleSheet.create({
     justifyContent: 'center',
     fontFamily: fontMontserrat('normal'),
     backgroundColor: 'white',
+  },
+  inputWithIconBoth: {
+    paddingRight: 44,
+    fontFamily: fontMontserrat('normal'),
+    backgroundColor: 'white',
+    paddingLeft: 40,
   },
   formErrorMessage: {
     marginVertical: 4,

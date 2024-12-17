@@ -5,6 +5,7 @@ import { IDataLogin } from '../domain/response';
 
 export default interface IAuthController {
   login: UseMutationResult<ResponseREST<IDataLogin>, unknown, ILoginPayload, unknown>;
-  register: UseMutationResult<ResponseREST<{}>, unknown, IRegisterPayload, unknown>;
-  forgotPassword: UseMutationResult<ResponseREST<{}>, unknown, string, unknown>;
+  register: UseMutationResult<ResponseREST<undefined>, unknown, IRegisterPayload, unknown>;
+  forgotPassword: UseMutationResult<ResponseREST<undefined>, unknown, string, unknown>;
+  onSignOut: () => Promise<void>;
 }

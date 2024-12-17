@@ -1,4 +1,3 @@
-import { useRouter } from 'react-native-auto-route';
 import {
   ICInstagram,
   ICLinkedIn,
@@ -7,24 +6,16 @@ import {
   ICSuitase,
   ICX,
   ReactNative,
-} from '../../../../../assets/icons/main';
-import { Card, Flex, Icon, Image, Text } from '../../../../../components';
-import MyCardProfileCurve from '../../../../../components/shapes/my-card-profile-curve';
-import { authRoute } from '../../../../../constants/routes';
-import { useColor } from '../../../../../shared/hooks';
-import { _removeData } from '../../../../../shared/local-storage';
-import { cDark } from '../../../../../shared/styles/colors';
+} from '../../../../../../assets/icons/main';
+import { Card, Flex, Icon, Image, Text } from '../../../../../../components';
+import MyCardProfileCurve from '../../../../../../components/shapes/my-card-profile-curve';
+import { useColor } from '../../../../../../shared/hooks';
+import { cDark } from '../../../../../../shared/styles/colors';
+import { useAuth } from '../../../../../auth/presentation/controller';
 
 const Profile = () => {
-  const { navigate } = useRouter();
+  const { onSignOut } = useAuth();
   const { color } = useColor('primary');
-
-  const onSignOut = async () => {
-    _removeData('token').then((success) => {
-      _removeData('user');
-      success && navigate(authRoute.login);
-    });
-  };
 
   return (
     <Card p="xl" mt="lg" shadow="sm" position="relative">

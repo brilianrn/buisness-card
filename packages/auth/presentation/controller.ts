@@ -5,12 +5,12 @@ import { appRoute, authRoute } from '../../../constants/routes';
 import { setAuthorizationHeader } from '../../../core/api/utils';
 import { useTranslations } from '../../../shared/hooks';
 import { _removeData, _storeData } from '../../../shared/local-storage';
-import { ILoginBody } from '../../my-card/presentation/dto/request';
 import { Repository as MyCardRepository } from '../../my-card/repository/rest';
 import { UseCase as MyCardUseCase } from '../../my-card/usecase';
 import IAuthController from '../ports/controller';
 import { Repository } from '../repository/rest';
 import { UseCase } from '../usecase';
+import { ILoginBody } from './dto/view';
 
 export const useAuth = (): IAuthController => {
   const repository = new Repository();
@@ -29,20 +29,8 @@ export const useAuth = (): IAuthController => {
       const { result, ...res } = await useCase.login(body);
       const isSetup = await setAuthorizationHeader(result?.token);
       if (isSetup) {
-        const user = await myCardUseCase.profile();
-        if (!user?.success) {
-          return { ...res, result, success: false, message: user?.message };
-        }
         const success = await _storeData({ storeKey: 'token', storeValue: result?.token || '' });
         if (!success) {
-          return { ...res, result, success: false, message: JSON.stringify(t('loginFail')) };
-        }
-        const successUser = await _storeData({
-          storeKey: 'user',
-          storeValue: JSON.stringify(user?.result),
-        });
-        if (!successUser) {
-          await _removeData('token');
           return { ...res, result, success: false, message: JSON.stringify(t('loginFail')) };
         }
       }
@@ -119,5 +107,12 @@ export const useAuth = (): IAuthController => {
     },
   });
 
-  return { login, register, forgotPassword };
+  const onSignOut = async () => {
+    _removeData('token').then((success) => {
+      _removeData('user');
+      success && navigate(authRoute.login);
+    });
+  };
+
+  return { login, register, forgotPassword, onSignOut };
 };

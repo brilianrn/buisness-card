@@ -9,7 +9,7 @@ export const http: AxiosInstance = axios.create({
   timeout: Number(process.env.TIMEOUT || 20000),
 });
 
-const get = async <T extends object>({
+const get = async <T extends object | string | unknown | undefined>({
   endpoint,
   config,
   queryParam,
@@ -39,7 +39,7 @@ const get = async <T extends object>({
   }
 };
 
-const post = async <T extends object>({
+const post = async <T extends object | string | unknown | undefined>({
   endpoint,
   body,
   config,
@@ -71,7 +71,7 @@ const post = async <T extends object>({
   }
 };
 
-const put = async <T extends object>({
+const put = async <T extends object | string | unknown | undefined>({
   endpoint,
   body,
   config,
@@ -103,7 +103,7 @@ const put = async <T extends object>({
   }
 };
 
-const patch = async <T extends object>({
+const patch = async <T extends object | string | unknown | undefined>({
   endpoint,
   body,
   config,
@@ -135,7 +135,7 @@ const patch = async <T extends object>({
   }
 };
 
-const apiDelete = async <T extends object>({
+const apiDelete = async <T extends object | string | unknown | undefined>({
   endpoint,
   bodyparam,
   config,

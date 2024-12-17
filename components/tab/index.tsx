@@ -1,24 +1,26 @@
-import { ComponentType, useMemo, useState } from 'react';
+import { ComponentType, ReactElement, useMemo, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
 import { cDark, cPrimary } from '../../shared/styles/colors';
 import { DivProps } from '../../shared/types/components/div.type';
 import Div from '../div';
+import Icon from '../icon';
 import Text from '../text';
 
 interface TabProps extends DivProps {
-  tabs: Array<{ title: string; component: ComponentType }>;
+  tabs: Array<{ title: string; component: ComponentType | ReactElement; icon?: string }>;
+  height?: number;
 }
 
-const Tab = ({ tabs, px = 16, ...propsTab }: TabProps) => {
+const Tab = ({ tabs, px = 16, height, ...propsTab }: TabProps) => {
   const [index, setIndex] = useState<number>(0);
 
   const layout = useWindowDimensions();
 
-  const routes: Array<{ key: string; title: string }> = useMemo(() => {
+  const routes: Array<{ key: string; title: string; icon?: string }> = useMemo(() => {
     return tabs.map((e) => ({
+      ...e,
       key: e?.title?.toLowerCase(),
-      title: e?.title,
     }));
   }, [tabs]);
 
@@ -34,7 +36,7 @@ const Tab = ({ tabs, px = 16, ...propsTab }: TabProps) => {
       navigationState={{ index, routes }}
       renderScene={SceneMap(maps)}
       onIndexChange={setIndex}
-      style={{ height: layout.height }}
+      style={{ height: height || layout.height }}
       renderTabBar={(props) => {
         return (
           <Div px={px} {...propsTab}>
@@ -42,14 +44,20 @@ const Tab = ({ tabs, px = 16, ...propsTab }: TabProps) => {
               {...props}
               renderLabel={({ route, focused, color }) => {
                 return (
-                  <Div>
+                  <Div flexDir="row" justifyContent="flex-start" gap={8} alignItems="center">
+                    {route?.icon && (
+                      <Icon.FA
+                        name={route?.icon}
+                        size={16}
+                        color={focused ? 'white' : cDark.default}
+                      />
+                    )}
                     <Text
-                      hex={color}
-                      size="md"
-                      color="blue"
+                      hex={focused ? 'white' : color}
+                      size="sm"
+                      color="primary"
                       tone="500"
-                      weight={focused ? 'bold' : 'normal'}
-                      style={{ textTransform: 'uppercase' }}>
+                      weight={focused ? 'bold' : 'normal'}>
                       {route.title}
                     </Text>
                   </Div>
@@ -58,15 +66,15 @@ const Tab = ({ tabs, px = 16, ...propsTab }: TabProps) => {
               activeColor={cPrimary.default}
               indicatorContainerStyle={{
                 backgroundColor: cDark[100],
-                borderRadius: 8,
+                borderRadius: 12,
               }}
               style={{ backgroundColor: 'transparent' }}
               indicatorStyle={{
-                backgroundColor: cDark[300],
+                backgroundColor: cPrimary.default,
                 height: '100%',
-                borderRadius: 8,
+                borderRadius: 12,
               }}
-              labelStyle={{ color: 'white' }}
+              labelStyle={{ color: cDark.default }}
             />
           </Div>
         );

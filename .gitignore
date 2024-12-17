@@ -64,6 +64,6 @@ yarn-error.log
 
 # Depedencies
 package-lock.json
-/yarn.lock
+# /yarn.lock
 .yarn
 .env

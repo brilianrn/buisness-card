@@ -3,9 +3,16 @@ import { TouchableOpacity } from 'react-native';
 import { Div as MDiv } from 'react-native-magnus';
 import { DivProps } from '../../shared/types/components/div.type';
 
-const Div: FC<DivProps> = ({ style, gap, flexDir = 'column', onPress, ...props }) => {
+const Div: FC<DivProps> = ({
+  style,
+  gap,
+  flexDir = 'column',
+  onPress,
+  containerStyle,
+  ...props
+}) => {
   return onPress ? (
-    <TouchableOpacity onPress={onPress} disabled={!onPress}>
+    <TouchableOpacity onPress={onPress} disabled={!onPress} style={containerStyle}>
       <MDiv {...props} style={Object.assign(style || {}, { gap })} flexDir={flexDir} />
     </TouchableOpacity>
   ) : (

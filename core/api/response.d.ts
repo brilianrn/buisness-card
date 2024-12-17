@@ -15,7 +15,7 @@ export type TResponseCode =
   | '503'
   | '504';
 
-export interface ResponseREST<T extends object | string> {
+export interface ResponseREST<T extends object | string | unknown | undefined> {
   success: boolean;
   message: string;
   code?: TResponseCode;

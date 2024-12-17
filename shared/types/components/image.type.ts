@@ -11,8 +11,8 @@ export interface IContainer {
 export interface ImageProps extends DivProps {
   src: ImageSourcePropType;
   style?: StyleProp<ImageStyle>;
-  height: number;
-  width: number;
+  height: number | string;
+  width: number | string;
   containerStyle?: StyleProp<ViewStyle>;
 }
 

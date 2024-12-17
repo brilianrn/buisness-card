@@ -14,9 +14,9 @@ const Layout: FC<LayoutProps> = ({ children, style, overflowY = true }) => {
   return (
     <SafeAreaView style={{ paddingBottom: 0, backgroundColor: color[50] }} edges={['top']}>
       <ScrollView
-        style={[{ backgroundColor: color[50], height: '100%' }, style]}
+        nestedScrollEnabled
         scrollEnabled={overflowY}
-        nestedScrollEnabled={true}>
+        style={[{ backgroundColor: color[50], height: '100%' }, style]}>
         {children}
       </ScrollView>
     </SafeAreaView>

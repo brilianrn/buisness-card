@@ -9,10 +9,15 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["node"]
+    "types": ["node"],
+
+    "target": "esnext",
+    "module": "commonjs",
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node"
   },
-  "include": ["**/*.ts", "**/*.tsx", "type.d.ts"],
-  "exclude": ["node_modules", "package-lock.json", "yarn.lock"],
+  "include": ["**/*.ts", "**/*.tsx", "type.d.ts", "node_modules/react-native-vector-icons/**/*"],
+  "exclude": ["node_modules", "package-lock.json", ".yarn"],
   "extends": "@tsconfig/react-native/tsconfig.json",
   "paths": {
     "crypto": ["node_modules/crypto"]
